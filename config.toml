@@ -10,7 +10,7 @@ theme = "dimension"
     description = "Devin Graham Portfolio"
     copyrightPublishYear = ""
     copyrightText = ""
-
+    favicon = "favicon.ico" # Path to favicon file
     # disableLogo = false
     logoImage = "images/devin.jpg"
     # logoIcon = "gem"
