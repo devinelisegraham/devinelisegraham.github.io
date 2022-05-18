@@ -1,0 +1,67 @@
+{{ partial "header.html" . }}
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+                <header id="header">
+                    <a href="/">
+                    <div class="logo" style="background-image: url({{ .Params.logo }}); background-size: cover">
+                    </div>
+                </a>
+                    <div class="content">
+                        <div class="inner">
+                            <h1>{{ .Title | default "Title" }}</h1>
+                            {{ if .Params.description }}
+                            <p>
+                                {{ .Params.description }}
+                            </p>
+                            {{ end }}
+                        </div>
+                    </div>
+                    <nav>
+                        <ul>
+                            {{ range .Pages.ByDate }}
+                                {{if and .Title .Params.showInMenu }}
+                                    {{if .Content}}
+                                        <li>
+                                            <a href="#{{ cond (in (.Title|urlize) "%") (.Title | base64Encode) (.Title) | urlize }}">{{ .Title }}</a>
+                                        </li>
+                                    {{ else }}
+                                        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                                    {{ end }}
+                                {{ end }}
+                            {{ end }}
+                        </ul>
+                    </nav>
+                </header>
+
+            <!-- Main -->
+                <div id="main">
+
+                    {{ range .Pages }}
+                        {{if .Title }}
+                            {{if .Content }}
+                                <article id="{{ .File.TranslationBaseName }}">
+                                    <h2 class="major" style="width: 100%">{{ .Title }}</h2>
+                                    <span class="image main"><img src="{{ .Params.image }}" alt="" /></span>
+                                    {{ .Content }}
+                                </article>
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+
+                </div>
+
+                {{ partial "design.html" .}}
+
+        </div>
+
+    <!-- BG -->
+    <div id="bg"></div>
+
+</body>
+
+{{ partial "footer.html" .}}
