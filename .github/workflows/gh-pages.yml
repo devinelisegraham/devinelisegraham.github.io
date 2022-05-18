@@ -28,5 +28,8 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
+          external_repository: devinelisegraham/devinelisegraham.github.io
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          user_name: devinelisegraham
+          user_email: devingraham.github@gmail.com
           publish_dir: ./public
